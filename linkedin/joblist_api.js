@@ -1,15 +1,16 @@
 const voyagerJobsDashJobCards = {
+    collection:209,
     keyword:'',
     start:0,
     apiUrl:function() {
       if(this.keyword.length <4) {
         throw new Error('set keyword')
       }
-      return `https://www.linkedin.com/voyager/api/voyagerJobsDashJobCards?decorationId=com.linkedin.voyager.dash.deco.jobs.search.JobSearchCardsCollection-194&count=25&q=jobSearch&query=(origin:JOB_SEARCH_PAGE_JOB_FILTER,keywords:${this.keyword},locationUnion:(geoId:102890719),selectedFilters:(sortBy:List(DD),distance:List(25)),spellCorrectionEnabled:true)&start=${this.start}`
+      return `https://www.linkedin.com/voyager/api/voyagerJobsDashJobCards?decorationId=com.linkedin.voyager.dash.deco.jobs.search.JobSearchCardsCollection-${this.collection}&count=25&q=jobSearch&query=(origin:JOB_SEARCH_PAGE_JOB_FILTER,keywords:${this.keyword},locationUnion:(geoId:102890719),selectedFilters:(sortBy:List(DD),distance:List(25),timePostedRange:List(r604800)),spellCorrectionEnabled:true)&start=${this.start}`
     },
     url:(categoryName) => {
       let d = new Date()
-      return `firebase_path/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
+      return `https://decodeurl-51e7f-default-rtdb.europe-west1.firebasedatabase.app/linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
     request:[],  
     runApi:async function() {
       this.request[0] = this.apiUrl()
@@ -22,6 +23,11 @@ const voyagerJobsDashJobCards = {
     },
     formCredentails: function(...reqParams) {
       this.request = reqParams
+      let collection = Number(reqParams[0].match(/JobSearchCardsCollection-(\d+)\&/))
+      if (typeof collection === 'number' && collection > 10) {
+        this.collection = reqParams[0].match(/JobSearchCardsCollection-(\d+)\&/)
+      }
+      
       return this
     },
     formPayload: async function() {
@@ -48,10 +54,11 @@ const voyagerJobsDashJobCards = {
       while (this.start < d.data.paging.total) {
         await this.post()
       } 
+      console.log('download finished')
       this.start = 0
+      return {status: 'finished'}
     },
-    setKeyword: function(keyword) {
-      
+    setKeyword: function(keyword) {     
       this.keyword = encodeURIComponent(keyword)
       return this
     }
