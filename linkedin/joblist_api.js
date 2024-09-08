@@ -1,4 +1,5 @@
 const voyagerJobsDashJobCards = {
+    firebaseProject: ''
     collection:209,
     keyword:'',
     start:0,
@@ -10,7 +11,7 @@ const voyagerJobsDashJobCards = {
     },
     url:(categoryName) => {
       let d = new Date()
-      return `https://decodeurl-51e7f-default-rtdb.europe-west1.firebasedatabase.app/linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
+      return `https://${this.firebaseProject}.firebasedatabase.app/linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
     request:[],  
     runApi:async function() {
       this.request[0] = this.apiUrl()
