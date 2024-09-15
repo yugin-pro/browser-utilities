@@ -23,8 +23,8 @@ const reqestList = ["cro specialist",
 "ecommerce analyst"]
 
 
-function createLine(dataArray,cb) {
-  let data = dataArray[Symbol.iterator]()
+reqestList.createLine =  function (cb) {
+  let data = this[Symbol.iterator]()
   return {
     snap: function() {
       let res = data.next().value 
@@ -33,7 +33,7 @@ function createLine(dataArray,cb) {
   }
 }
 
-let test = createLine(reqestList,callback)
+let test = createLine(callback)
 
 console.log(test.snap())
 
