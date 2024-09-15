@@ -9,9 +9,9 @@ const voyagerJobsDashJobCards = {
       }
       return `https://www.linkedin.com/voyager/api/voyagerJobsDashJobCards?decorationId=com.linkedin.voyager.dash.deco.jobs.search.JobSearchCardsCollection-${this.collection}&count=25&q=jobSearch&query=(origin:JOB_SEARCH_PAGE_JOB_FILTER,keywords:${this.keyword},locationUnion:(geoId:102890719),selectedFilters:(sortBy:List(DD),distance:List(25),timePostedRange:List(r604800)),spellCorrectionEnabled:true)&start=${this.start}`
     },
-    url:(categoryName) => {
+    url:(categoryName,projectEndpoint = this.firebaseProject) => {
       let d = new Date()
-      return `https://${this.firebaseProject}.firebasedatabase.app/linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
+      return `${projectEndpoint}${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
     request:[],  
     runApi:async function() {
       this.request[0] = this.apiUrl()
