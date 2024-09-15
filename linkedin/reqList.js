@@ -21,3 +21,19 @@ const reqestList = ["cro specialist",
 "bigquery",
 "google cloud platform",
 "ecommerce analyst"]
+
+
+function createLine(dataArray,cb) {
+  let data = dataArray[Symbol.iterator]()
+  return {
+    snap: function() {
+      let res = data.next().value 
+      return res ? cb(res)  : new Error('No value') 
+    }
+  }
+}
+
+let test = createLine(reqestList,callback)
+
+console.log(test.snap())
+
