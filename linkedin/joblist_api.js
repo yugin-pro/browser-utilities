@@ -1,5 +1,5 @@
 const voyagerJobsDashJobCards = {
-    firebaseProject: ''
+    firebaseProject: '',
     collection:209,
     keyword:'',
     start:0,
