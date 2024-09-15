@@ -9,7 +9,7 @@ const voyagerJobsDashJobCards = {
       }
       return `https://www.linkedin.com/voyager/api/voyagerJobsDashJobCards?decorationId=com.linkedin.voyager.dash.deco.jobs.search.JobSearchCardsCollection-${this.collection}&count=25&q=jobSearch&query=(origin:JOB_SEARCH_PAGE_JOB_FILTER,keywords:${this.keyword},locationUnion:(geoId:102890719),selectedFilters:(sortBy:List(DD),distance:List(25),timePostedRange:List(r604800)),spellCorrectionEnabled:true)&start=${this.start}`
     },
-    url:(categoryName,projectEndpoint = this.firebaseProject) => {
+    url:(categoryName, projectEndpoint) => {
       let d = new Date()
       return `${projectEndpoint}${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
     request:[],  
@@ -43,7 +43,7 @@ const voyagerJobsDashJobCards = {
     post: async function() {
       let payload = await this.formPayload()
       let dataStr = JSON.stringify(payload)
-      let res = await fetch(this.url(this.keyword),{method:'POST',body: dataStr.replace(/\$/g,'')})
+      let res = await fetch(this.url(this.keyword, this.firebaseProject),{method:'POST',body: dataStr.replace(/\$/g,'')})
       let data = await res.json()
       if (payload.data.paging)
       this.start += 25
