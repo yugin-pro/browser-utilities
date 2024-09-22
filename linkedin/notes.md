@@ -7,3 +7,31 @@ voyagerJobsDashJobCards.firebaseProject = 'my project name with location'
 let callb = function (params) {
     return voyagerJobsDashJobCards.setKeyword(params)
 }
+
+## Process 
+```
+const voyagerJobsDashJobCards = {}
+const reqestList = []
+
+voyagerJobsDashJobCards.firebaseProject = '
+voyagerJobsDashJobCards.formCredentails('fetch request')
+
+const callbackWraper = function (params) {
+    return voyagerJobsDashJobCards.setKeyword(params)
+}
+
+reqestList.createLine =  function (cb) {
+  let data = this[Symbol.iterator]()
+  return {
+    snap: function() {
+      let res = data.next().value 
+      return res ? cb(res)  : new Error('No value') 
+    }
+  }
+}
+
+let q = reqestList.createLine(callbackWraper)
+
+q.snap().download()
+
+```
