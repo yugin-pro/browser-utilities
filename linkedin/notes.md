@@ -3,3 +3,7 @@ voyagerJobsDashJobCards.formCredentails() - get access to api by inserting fetch
 voyagerJobsDashJobCards.setKeyword('google cloud platform').download() - loading results to db
 
 voyagerJobsDashJobCards.firebaseProject = 'my project name with location'
+
+let callb = function (params) {
+    return voyagerJobsDashJobCards.setKeyword(params)
+}
