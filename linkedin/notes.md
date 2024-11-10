@@ -13,7 +13,7 @@ let callb = function (params) {
 const voyagerJobsDashJobCards = {}
 const reqestList = []
 
-voyagerJobsDashJobCards.firebaseProject = '
+voyagerJobsDashJobCards.firebaseProject = 'https://some_proj_location.firebasedatabase.app/'
 voyagerJobsDashJobCards.formCredentails('fetch request')
 
 const callbackWraper = function (params) {
