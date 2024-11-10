@@ -11,7 +11,7 @@ const voyagerJobsDashJobCards = {
     },
     url:(categoryName, projectEndpoint) => {
       let d = new Date()
-      return `${projectEndpoint}/linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
+      return `${projectEndpoint}linkedin/voyagerJobsDashJobCards/${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}/${categoryName}.json`},
     request:[],  
     runApi:async function() {
       this.request[0] = this.apiUrl()
