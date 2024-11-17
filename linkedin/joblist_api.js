@@ -79,12 +79,12 @@ const voyagerJobsDashJobCards = {
         return this
     },
     createQueue() {
-        let data = this.keywordList[Symbol.iterator]()
+        const data = this.keywordList[Symbol.iterator]()
         return {
-        snap() {
-          let res = data.next().value 
-          return res ? this.setKeyword(res)  : new Error('No value') 
-        }
+            snap() {
+              let res = data.next().value 
+              return res ? this.setKeyword(res)  : new Error('No value') 
+            }
         }
     }
   } 
