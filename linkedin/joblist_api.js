@@ -75,5 +75,19 @@ const voyagerJobsDashJobCards = {
         }
 
         this.keywordList = keywordList
+        
+        return this
+    },
+    createQueue() {
+        const apiLink = this
+       return function () {
+          let data = apiLink.keywordList[Symbol.iterator]()
+          return {
+            snap() {
+              let res = data.next().value 
+              return res ? apiLink.setKeyword(res)  : new Error('No value') 
+            }
+          }
+        }
     }
   } 
