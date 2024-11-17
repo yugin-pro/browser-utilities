@@ -62,5 +62,18 @@ const voyagerJobsDashJobCards = {
     setKeyword: function(keyword) {     
       this.keyword = encodeURIComponent(keyword)
       return this
+    },
+    setConfig(config) {
+        const {project,fetchParams,keywordList} = config
+        
+        this.firebaseProject = project
+
+        this.request = fetchParams
+        let collection = Number(fetchParams[0].match(/JobSearchCardsCollection-(\d+)\&/))
+        if (typeof collection === 'number' && collection > 10) {
+        this.collection = reqParams[0].match(/JobSearchCardsCollection-(\d+)\&/)
+        }
+
+        this.keywordList = keywordList
     }
   } 
