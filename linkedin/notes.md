@@ -1,37 +1,41 @@
-voyagerJobsDashJobCards.formCredentails() - get access to api by inserting fetch request parameters 
-
-voyagerJobsDashJobCards.setKeyword('google cloud platform').download() - loading results to db
-
-voyagerJobsDashJobCards.firebaseProject = 'my project name with location'
-
-let callb = function (params) {
-    return voyagerJobsDashJobCards.setKeyword(params)
-}
 
 ## Process 
 ```
-const voyagerJobsDashJobCards = {}
-const reqestList = []
+const jobApiConfig
 
-voyagerJobsDashJobCards.firebaseProject = 'https://some_proj_location.firebasedatabase.app/'
-voyagerJobsDashJobCards.formCredentails('fetch request')
+jobApiConfig.setKeywordList(["cro specialist",
+"performance analyst",
+"sea specialist",
+"advertisment analyst",
+"adwords analyst",
+"conversion analyst",
+"data analyst",
+"google analytics",
+"marketing analyst",
+"marketing automation",
+"power bi",
+"sql developer",
+"web analyst",
+"conversion optimization",
+"paid search analyst",
+"looker",
+"data professional",
+"matomo",
+"piwik pro",
+"ads analyst",
+"bigquery",
+"google cloud platform",
+"ecommerce analyst"]
+)
 
-const callbackWraper = function (params) {
-    return voyagerJobsDashJobCards.setKeyword(params)
-}
+jobApiConfig.setProjectEndpoint('')
+jobApiConfig.setFetchParam()
 
-reqestList.createLine =  function (cb) {
-  let data = this[Symbol.iterator]()
-  return {
-    snap: function() {
-      let res = data.next().value 
-      return res ? cb(res)  : new Error('No value') 
-    }
-  }
-}
+const voyagerJobsDashJobCards
+voyagerJobsDashJobCards.setConfig(jobApiConfig)
 
-let q = reqestList.createLine(callbackWraper)
+const line = voyagerJobsDashJobCards.createQueue()
+line.snap().download()
 
-q.snap().download()
 
 ```
