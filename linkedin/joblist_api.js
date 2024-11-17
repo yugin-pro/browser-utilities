@@ -80,11 +80,11 @@ const voyagerJobsDashJobCards = {
     },
     createQueue() {
         const data = this.keywordList[Symbol.iterator]()
-        return {
+        return Object.setPrototypeOf({
             snap() {
               let res = data.next().value 
-              return res ? this.setKeyword(res)  : new Error('No value') 
+              return res ? super.setKeyword(res)  : new Error('No value') 
             }
-        }
+        },this)
     }
   } 
