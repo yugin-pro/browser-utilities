@@ -3,7 +3,14 @@
 ```
 const jobApiConfig
 
-jobApiConfig.setKeywordList(["cro specialist",
+jobApiConfig.setKeywordList([
+"advertising",
+"ecommerce",
+"ppc",
+"seo",
+"facebook ads",
+"google ads",
+"cro specialist",
 "performance analyst",
 "sea specialist",
 "advertisment analyst",
