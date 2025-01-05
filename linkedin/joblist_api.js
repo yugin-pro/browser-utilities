@@ -4,7 +4,7 @@ const voyagerJobsDashJobCards = {
     keyword:'',
     start:0,
     apiUrl:function() {
-      if(this.keyword.length <4) {
+      if(this.keyword.length <= 2) {
         throw new Error('set keyword')
       }
       return `https://www.linkedin.com/voyager/api/voyagerJobsDashJobCards?decorationId=com.linkedin.voyager.dash.deco.jobs.search.JobSearchCardsCollection-${this.collection}&count=25&q=jobSearch&query=(origin:JOB_SEARCH_PAGE_JOB_FILTER,keywords:${this.keyword},locationUnion:(geoId:102890719),selectedFilters:(sortBy:List(DD),distance:List(25),timePostedRange:List(r604800)),spellCorrectionEnabled:true)&start=${this.start}`
