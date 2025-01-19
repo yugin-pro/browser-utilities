@@ -4,26 +4,17 @@
 const jobApiConfig
 
 jobApiConfig.setKeywordList([
-"advertising",
-"ecommerce",
-"ppc",
-"seo",
-"facebook ads",
-"google ads",
-"cro specialist",
 "performance analyst",
-"sea specialist",
 "advertisment analyst",
 "adwords analyst",
 "conversion analyst",
 "data analyst",
 "google analytics",
 "marketing analyst",
-"marketing automation",
 "power bi",
 "sql developer",
 "web analyst",
-"conversion optimization",
+"tag manager",
 "paid search analyst",
 "looker",
 "data professional",
@@ -32,7 +23,18 @@ jobApiConfig.setKeywordList([
 "ads analyst",
 "bigquery",
 "google cloud platform",
-"ecommerce analyst"]
+"ecommerce analyst",
+"advertising",
+"ecommerce",
+"ppc",
+"seo",
+"facebook ads",
+"google ads",
+"cro specialist",
+"sea specialist",
+"conversion optimization",
+"marketing automation",
+]
 )
 
 jobApiConfig.setProjectEndpoint('')
